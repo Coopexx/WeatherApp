@@ -12,10 +12,10 @@
             <h1 class="greeting__hello">Hello Hendrik</h1>
             <section class="overview">
                 <h2 class="overview__city">Berlin</h2>
-                <div class="overview__spacer"></div>
+                <div class="spacer"></div>
                 <h2 class="overview__day">Friday</h2>
                 <h2 class="overview__time">14:00</h2>
-                <div class="overview__spacer"></div>
+                <div class="spacer"></div>
                 <h2 class="overview__weather">Cloudy</h2>
             </section>
             <section class="forecast">
@@ -92,14 +92,28 @@
             </section>
             <section class="statistics">
                 <div class="statistics__list">
-                    <ol class="list__temperature"></ol>
-                    <ol class="list__precipitation"></ol>
-                    <ol class="list__wind"></ol>
+                    <ol class="list__temperature">
+                        Temperature
+                    </ol>
+                    <div class="spacer"></div>
+                    <ol class="list__precipitation">
+                        Precipitation
+                    </ol>
+                    <div class="spacer"></div>
+                    <ol class="list__wind">
+                        Wind
+                    </ol>
                 </div>
-                <div class="statistics_graph"></div>
             </section>
+            <div class="wrapper__wrapper">
+                <div class="statistics__wrapper">
+                    <canvas class="statistics__graph"></canvas>
+                </div>
+            </div>
         </main>
         <script type="text/javascript" src="scripts/config.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" src="scripts/graph.js"></script>
         <script defer type="text/javascript" src="scripts/index.js"></script>
     </body>
 </html>
