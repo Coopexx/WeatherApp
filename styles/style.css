@@ -70,7 +70,9 @@ main {
 }
 
 .statistics__list {
+    width: 40%;
     display: flex;
+    justify-content: space-evenly;
 }
 
 .wrapper__wrapper {
