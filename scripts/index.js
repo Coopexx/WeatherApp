@@ -1,10 +1,41 @@
-const renderData = (data) => {
-    console.log(data)
-    document.querySelector('.overview__day').innerHTML = data.day
+const setDailyForecast = (daily, i) => {
+    let selectedIcon
+
+    const iconCloud = 'images/sprite.svg#icon-cloud'
+    const iconSnow = 'images/sprite.svg#icon-cloud-snow'
+    const iconRain = 'images/sprite.svg#icon-cloud-rain'
+
+    switch (daily.weather) {
+        case 'Clouds':
+            selectedIcon = iconCloud
+            break
+        case 'Snow':
+            selectedIcon = iconSnow
+            break
+        case 'Rain':
+            selectedIcon = iconRain
+    }
+
+    document.querySelector(`.day${i}`).innerHTML = daily.day
+    document.querySelector(`.weather${i}`).setAttribute('href', selectedIcon)
+    document.querySelector(`.temp${i}__max`).innerHTML = daily.tempMax
+    document.querySelector(`.temp${i}__min`).innerHTML = daily.tempMin
+}
+
+const renderData = (dataObj) => {
+    console.log(dataObj)
+    //Overview
+    document.querySelector('.overview__day').innerHTML = dataObj.date.day
     document.querySelector('.overview__time').innerHTML =
-        data.hour.toString() + ':' + data.minute.toString()
-    document.querySelector('.overview__city').innerHTML = data.location
-    document.querySelector('.overview__weather').innerHTML = data.current
+        dataObj.date.hour.toString() + ':' + dataObj.date.minute.toString()
+    document.querySelector('.overview__city').innerHTML = dataObj.location
+    document.querySelector('.overview__weather').innerHTML =
+        dataObj.daily[0].weather
+    //Daily Forecast
+    for (let i = 0; i < dataObj.daily.length; i++) {
+        setDailyForecast(dataObj.daily[i], i)
+    }
+    //Hourly Forecast
 }
 
 async function reverseGeocoding(pos) {
@@ -15,27 +46,68 @@ async function reverseGeocoding(pos) {
     return data.address.city
 }
 
-async function filterData(weather, pos) {
-    console.log(weather)
-    const weatherCurrent = weather.current.weather[0].main
-    //Get Time
-    const time = new Date(weather.current.dt * 1000)
+const getDate = () => {
+    const time = new Date()
     const day = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(
         time
     )
     const hour = time.getHours()
     const minute = time.getMinutes()
 
-    //Get Location
-    const location = await reverseGeocoding(pos)
-
-    //Create Data Object
-    const filteredData = {
+    return {
         day: day,
         hour: hour,
         minute: minute,
+    }
+}
+
+const getDailyForecast = (dataObj) => {
+    dataObj.pop()
+    const arr = []
+    for (let i = 0; i < dataObj.length; i++) {
+        const unix_timestamp = dataObj[i].dt
+        const date = new Date(unix_timestamp * 1000)
+        const day = new Intl.DateTimeFormat('en-US', {
+            weekday: 'long',
+        }).format(date)
+
+        arr[i] = {
+            day: day.substring(0, 2).toUpperCase(),
+            weather: dataObj[i].weather[0].main,
+            tempMin: Math.round(dataObj[i].temp.min) + '°',
+            tempMax: Math.round(dataObj[i].temp.max) + '°',
+        }
+    }
+    return arr
+}
+
+const getHourlyForecast = (dataObj) => {
+    const arr = []
+    for (let i = 0; i < dataObj.length; i += 2) {
+        const unix_timestamp = dataObj[i].dt
+        const date = new Date(unix_timestamp * 1000)
+
+        arr[i] = {
+            weather: dataObj[i].weather[0].main,
+            temp: dataObj[i].temp,
+            hour: date.getHours(),
+        }
+    }
+    return arr
+}
+
+async function filterData(weatherData, pos) {
+    const date = getDate()
+    const hourly = getHourlyForecast(weatherData.hourly)
+    const daily = getDailyForecast(weatherData.daily)
+
+    const location = await reverseGeocoding(pos)
+
+    const filteredData = {
         location: location,
-        current: weatherCurrent,
+        date,
+        hourly,
+        daily,
     }
     return filteredData
 }
@@ -69,8 +141,8 @@ const getPosition = () => {
 async function parseData() {
     const pos = await getPosition()
     const url = await createURL(pos)
-    const data = await fetchData(url)
-    const filteredData = await filterData(data, pos)
+    const weatherData = await fetchData(url)
+    const filteredData = await filterData(weatherData, pos)
     renderData(filteredData)
 }
 
