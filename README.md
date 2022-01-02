@@ -1,4 +1,4 @@
-![WeatherApp](./images/thumbnail.png)
+![WeatherApp](./images/thumbnail.jpg)
 
 A weather application that displays the current weather forecast based on your location.
 
