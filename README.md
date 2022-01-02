@@ -1,9 +1,9 @@
-![WeatherApp](./thumbnail.png)
+![WeatherApp](./images/thumbnail.png)
 
 A weather application that displays the current weather forecast based on your location.
 
 A live demo can be found here:
-[Demo](https://hendriktreuner.me/weather-app)
+[WeatherApp](https://hendriktreuner.me/weather-app)
 
 ## Description
 
@@ -32,6 +32,6 @@ The website is tested and works on Chrome, Edge, FireFox and Opera.
 -   Get your own API key on [OpenWeatherMap](https://openweathermap.org/)
 -   Create a file called "config.js". Store your unique API key there
 -   The file should look like this:
--   ![Screenshot](./screenshot.png)
+-   ![Screenshot](./images/screenshot.png)
 
 -   Store the newly created "config.js" file in the "scripts" folder
