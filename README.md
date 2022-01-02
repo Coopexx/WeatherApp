@@ -31,6 +31,6 @@ The website is tested and works on Chrome, FireFox and Opera.
 -   Download the source code
 -   Get your own API key on [OpenWeatherMap](https://openweathermap.org/)
 -   Create a file called "config.js". Store your unique API key there. = - The file should look like this:
-    ![Screenshot](./screenshot.png)
+-   ![Screenshot](./screenshot.png)
 
 -   Store the newly created "config.js" file in the "scripts" folder
