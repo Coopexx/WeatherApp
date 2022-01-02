@@ -204,5 +204,4 @@ const date = new Date();
 
 setInterval(() => {
     window.location.reload();
-    console.log('reload');
 }, (60 - date.getSeconds()) * 1000);
