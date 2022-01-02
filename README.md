@@ -1,8 +1,35 @@
-# weather-app
+![WeatherApp](./thumbnail.png)
 
 A weather application that displays the current weather forecast based on your location.
 
-### Known Issues
+A live demo can be found here:
+[Demo](https://hendriktreuner.me/weather-app)
 
-Because the web app uses the Geolocation API it doesn't support browsers like Safari even if the MDN docs say something different.
-There are known issues, that Geolocation only works on Safari, if the device is connected to a WIFI signal.
+## Description
+
+This project is created for the purpose of learning how to interact with APIs and how to extract and filter data sent by them.
+
+What it does:
+
+-   Display the current location, time and weather
+-   Display a daily forecast for the next upcoming 7 days including Weekday, weather, minimum & maximum temperature
+-   Display a temperature graph in a 2-hours-step-interval for the upcoming 14 hours
+
+## Technologies
+
+-   Plain HTML/CSS/JS
+-   OpenWeatherMap API (to fetch the Weather Data)
+-   Geolocation API (Built in Browser API)
+-   OpenStreetMap API (for reverse geocoding)
+
+## Browser Support
+
+The website is tested and works on Chrome, FireFox and Opera.
+
+## How to install
+
+-   Download the source code
+-   Get your own API key on [OpenWeatherMap](https://openweathermap.org/)
+-   Create a file called "config.js". Store your unique API key there. The file should look like this:
+    ![Screenshot](./screenshot.png)
+-   Store the newly created "config.js" file in the "scripts" folder
