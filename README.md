@@ -24,7 +24,7 @@ What it does:
 
 ## Browser Support
 
-The website is tested and works on Chrome, FireFox and Opera.
+The website is tested and works on Chrome, Edge, FireFox and Opera.
 
 ## How to install
 
