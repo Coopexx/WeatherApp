@@ -1,5 +1,9 @@
 ![WeatherApp](./images/thumbnail.jpg)
 
+<div align="center">
+   <img src="https://img.shields.io/github/license/Coopexx/food-order-app" />
+</div>
+
 A weather application that displays the current weather forecast based on your location.
 
 A live demo can be found [here](https://hendriktreuner.me/weather-app)
@@ -34,3 +38,7 @@ The website is tested and works on Chrome, Edge, FireFox and Opera.
 -   ![Screenshot](./images/screenshot.png)
 
 -   Store the newly created "config.js" file in the "scripts" folder
+
+## License
+
+MIT License
