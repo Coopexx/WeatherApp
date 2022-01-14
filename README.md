@@ -2,8 +2,7 @@
 
 A weather application that displays the current weather forecast based on your location.
 
-A live demo can be found here:
-[WeatherApp](https://hendriktreuner.me/weather-app)
+A live demo can be found [here](https://hendriktreuner.me/weather-app)
 
 ## Description
 
@@ -22,7 +21,7 @@ What it does:
 -   Geolocation API (Built in Browser API)
 -   OpenStreetMap API (for reverse geocoding)
 
-## Browser Support
+## Browser Support & Testing
 
 The website is tested and works on Chrome, Edge, FireFox and Opera.
 
