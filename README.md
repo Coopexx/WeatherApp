@@ -1,7 +1,7 @@
 ![WeatherApp](./images/thumbnail.jpg)
 
 <div align="center">
-   <img src="https://img.shields.io/github/license/Coopexx/food-order-app" />
+   <img src="https://img.shields.io/github/license/Coopexx/food-order-app" alt="License Badge"/>
 </div>
 
 A weather application that displays the current weather forecast based on your location.
